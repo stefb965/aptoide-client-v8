@@ -8,9 +8,7 @@ package cm.aptoide.pt.v8engine.billing.view;
 import android.os.Bundle;
 import cm.aptoide.pt.v8engine.billing.AptoideBilling;
 import cm.aptoide.pt.v8engine.billing.PaymentAnalytics;
-import cm.aptoide.pt.v8engine.billing.Product;
 import cm.aptoide.pt.v8engine.billing.repository.sync.PaymentSyncScheduler;
-import cm.aptoide.pt.v8engine.billing.services.WebPayment;
 import cm.aptoide.pt.v8engine.presenter.Presenter;
 import cm.aptoide.pt.v8engine.presenter.View;
 import rx.Completable;
@@ -83,7 +81,7 @@ public class WebAuthorizationPresenter implements Presenter {
                         return Completable.complete();
                       }
 
-                      return aptoideBilling.processWebPayment(paymentId, product)
+                      return aptoideBilling.processPayment(paymentId, product)
                           .observeOn(AndroidSchedulers.mainThread())
                           .doOnCompleted(() -> view.dismiss());
                     })))
