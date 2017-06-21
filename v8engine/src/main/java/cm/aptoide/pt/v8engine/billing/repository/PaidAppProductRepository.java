@@ -14,7 +14,6 @@ import cm.aptoide.pt.dataprovider.ws.v3.BaseBody;
 import cm.aptoide.pt.dataprovider.ws.v3.GetApkInfoRequest;
 import cm.aptoide.pt.dataprovider.ws.v3.V3;
 import cm.aptoide.pt.model.v3.PaidApp;
-import cm.aptoide.pt.v8engine.billing.Payer;
 import cm.aptoide.pt.v8engine.billing.Payment;
 import cm.aptoide.pt.v8engine.billing.Product;
 import cm.aptoide.pt.v8engine.billing.Purchase;
@@ -43,11 +42,8 @@ public class PaidAppProductRepository extends ProductRepository {
   private final Resources resources;
 
   public PaidAppProductRepository(PurchaseFactory purchaseFactory, PaymentFactory paymentFactory,
-      AuthorizationRepository authorizationRepository,
-      PaymentConfirmationRepository confirmationRepository, Payer payer,
-      AuthorizationFactory authorizationFactory, NetworkOperatorManager operatorManager,
-      BodyInterceptor<BaseBody> bodyInterceptorV3, OkHttpClient httpClient,
-      Converter.Factory converterFactory, ProductFactory productFactory,
+      NetworkOperatorManager operatorManager, BodyInterceptor<BaseBody> bodyInterceptorV3,
+      OkHttpClient httpClient, Converter.Factory converterFactory, ProductFactory productFactory,
       TokenInvalidator tokenInvalidator, SharedPreferences sharedPreferences, Resources resources) {
     super(paymentFactory);
     this.purchaseFactory = purchaseFactory;
